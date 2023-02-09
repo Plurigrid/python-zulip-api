@@ -60,6 +60,7 @@ def main() -> None:
         sys.exit(1)
 
     message_server = MockMessageServer()
+    print(os.getcwd())
     bot_handler = TerminalBotHandler(args.bot_config_file, message_server)
     if hasattr(message_handler, "initialize") and callable(message_handler.initialize):
         message_handler.initialize(bot_handler)
