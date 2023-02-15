@@ -16,6 +16,7 @@ class PlurigridReader:
             documents = SimpleDirectoryReader(data_dir).load_data()
             index = GPTSimpleVectorIndex(documents)
             index.save_to_disk(index_path)
+            self.index = index
 
     def query(self, question):
         res = self.index.query(question)
