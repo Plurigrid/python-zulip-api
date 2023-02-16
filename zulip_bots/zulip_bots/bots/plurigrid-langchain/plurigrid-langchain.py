@@ -4,7 +4,9 @@ import asyncio
 
 
 class PlurigridHandler(object):
-    # def initialize(self, bot_handler):
+    def initialize(self, bot_handler):
+        self.agent = agent.Agent()
+        self.agent.init()
 
     def usage(self):
         return """
@@ -14,7 +16,7 @@ class PlurigridHandler(object):
 
     def handle_message(self, message, bot_handler):
         loop = asyncio.get_event_loop()
-        coroutine = agent.test(message["content"])
+        coroutine = self.agent.handle_query(message["content"])
         reply = loop.run_until_complete(coroutine)
         bot_handler.send_reply(message, reply)
 
