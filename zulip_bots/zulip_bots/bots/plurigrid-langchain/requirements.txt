@@ -1,0 +1,3 @@
+langchain
+cosmos_sdk
+openai
